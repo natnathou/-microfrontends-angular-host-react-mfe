@@ -36,15 +36,12 @@ export class WrapperComponent implements AfterContentInit {
       ? this.route.snapshot.data['isReact']
       : this.isReact;
 
-    console.log(isReact)
 
     const importFn = registry[importName as KeyRegistry];
     importFn()
       .then((_: any) => {
         console.debug(`element ${elementName} loaded!`);
         if (isReact) {
-          console.log('isReact')
-
           _.mount(
             this.vc.nativeElement,
             EVENT_NAME_TO_BE_UPDATED_FROM_MFE_ROUTING_CHANGES,
@@ -52,8 +49,6 @@ export class WrapperComponent implements AfterContentInit {
             this.router.url
           );
         } else {
-          console.log('isReeeeact')
-
           _.mount(
             elementName,
             EVENT_NAME_TO_BE_UPDATED_FROM_MFE_ROUTING_CHANGES,
@@ -61,7 +56,6 @@ export class WrapperComponent implements AfterContentInit {
             this.router.url
           );
           const element = document.createElement(elementName);
-          console.log(element)
           this.vc.nativeElement.appendChild(element);
         }
         if (!isReact) {
