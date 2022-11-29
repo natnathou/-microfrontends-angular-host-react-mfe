@@ -25,28 +25,28 @@ const config = withModuleFederationPlugin({
   exposes: {
     "./Component": "./src/bootstrap.ts",
   },
-  // shared: share({
-  //   "@angular/core": {
-  //     singleton: true,
-  //     strictVersion: true,
-  //     requiredVersion: "auto",
-  //   },
-  //   "@angular/common": {
-  //     singleton: true,
-  //     strictVersion: true,
-  //     requiredVersion: "auto",
-  //   },
-  //   "@angular/common/http": {
-  //     singleton: true,
-  //     strictVersion: true,
-  //     requiredVersion: "auto",
-  //   },
-  //   "@angular/router": {
-  //     singleton: true,
-  //     strictVersion: true,
-  //     requiredVersion: "auto",
-  //   },
-  // }),
+  shared: share({
+    "@angular/core": {
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: "auto",
+    },
+    "@angular/common": {
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: "auto",
+    },
+    "@angular/common/http": {
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: "auto",
+    },
+    "@angular/router": {
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: "auto",
+    },
+  }),
 });
 
 config.plugins.push(
@@ -60,5 +60,6 @@ config.plugins.push(new ProgressBarPlugin());
 
 delete config.plugins[0]._options.library;
 config.output.scriptType = "text/javascript";
+config.devtool='eval-cheap-module-source-map';
 
 module.exports = config;

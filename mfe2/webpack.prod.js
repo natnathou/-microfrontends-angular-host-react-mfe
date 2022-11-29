@@ -37,6 +37,7 @@ const prodConfig = {
       automaticNameDelimiter: '_',
     },
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
